@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var message = "";
+    //var pobrana = Request["liczba"];
+    //var liczba = Convert.ToInt32(pobrana);
+    var liczba = 15;
+    if(liczba % 3 == 0)
+    {
+        message = "Fizz";
+    }
+    else
+    {
+        message = "Liczba: " + liczba + " nie spełnia kryteriów FizzBuzz";
+    }
+    if(liczba % 5 == 0)
+    {
+        message = "Buzz";
+    }
+    if(liczba % 3 == 0 && liczba % 5 == 0)
+    {
+        message = "FizzBuzz";
+    }
+}
+
+<span asp-validation-for="FizzBuzz.Number" class="text-danger"></span>
+
+<div class="text-left">
+    <h1 class="display-4">Cześć @Model.Name</h1>
+    <form method="post">
+        <label asp-for="FizzBuzz.Number"></label><br />
+        <input asp-for="FizzBuzz.Number" name="liczba"/><br />
+        <input type="submit" value="Zatwierdź" name="przycisk" class="btn btn-primary mb-2">
+    </form>
+    <div class="alert alert-success" role="alert">
+        @message
+    </div>
+</div>
