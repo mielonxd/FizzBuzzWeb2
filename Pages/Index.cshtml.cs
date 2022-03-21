@@ -32,11 +32,19 @@ namespace FizzBuzzWeb.Pages
 
         public IActionResult OnPost()
         {
+            /*
             if (!ModelState.IsValid)
             {
                 return Page();
             }
             return RedirectToPage("./Privacy");
+            */
+            ViewData["Number"] = FizzBuzz.Number;
+            ViewData["check"] = FizzBuzz.check();
+            return Page();
+
+
+
         }
     }
 }
